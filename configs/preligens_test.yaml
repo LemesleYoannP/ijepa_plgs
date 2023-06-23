@@ -5,7 +5,7 @@ data:
   - 0.3
   - 1.0
   crop_size: 224
-  image_folder: valohai/inputs/dataset/
+  image_folder: train/imgs
   num_workers: 10
   pin_mem: true
   root_path: valohai/inputs/dataset/
