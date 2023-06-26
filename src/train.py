@@ -392,7 +392,7 @@ def main(args, resume_preempt=False):
                     json_log = OrderedDict()
                     json_log["loss"] = loss_meter.avg
                     json_log["lr"] = _new_lr
-                    json_log["step"] = itr
+                    json_log["step"] = len(unsupervised_loader) * epoch + itr
                     print(json.dumps(json_log))
 
             log_stats()
