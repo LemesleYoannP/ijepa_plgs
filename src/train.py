@@ -216,8 +216,6 @@ def main(args, resume_preempt=False):
                 world_size=world_size,
                 rank=rank,
                 root_path=root_path,
-                image_folder=image_folder,
-                copy_data=copy_data,
                 drop_last=True)
         ipe = len(unsupervised_loader)
 
