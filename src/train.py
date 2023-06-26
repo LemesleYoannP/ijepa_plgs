@@ -206,7 +206,7 @@ def main(args, resume_preempt=False):
                 drop_last=True)
         ipe = len(unsupervised_loader)
     else:
-        unsupervised_loader, unsupervised_sampler = make_preligens_data(
+        _, unsupervised_loader, unsupervised_sampler = make_preligens_data(
                 transform=transform,
                 batch_size=batch_size,
                 collator=mask_collator,
