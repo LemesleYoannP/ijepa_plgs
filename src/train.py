@@ -42,6 +42,7 @@ from src.utils.logging import (
     AverageMeter)
 from src.utils.tensors import repeat_interleave_batch
 from src.datasets.imagenet1k import make_imagenet1k
+from src.datasets.preligens_data import make_preligens_data
 
 from src.helper import (
     load_checkpoint,
@@ -189,7 +190,7 @@ def main(args, resume_preempt=False):
         color_jitter=color_jitter)
 
     # -- init data-loaders/samplers
-    if True:
+    if False:
         _, unsupervised_loader, unsupervised_sampler = make_imagenet1k(
                 transform=transform,
                 batch_size=batch_size,
@@ -205,7 +206,7 @@ def main(args, resume_preempt=False):
                 drop_last=True)
         ipe = len(unsupervised_loader)
     else:
-         unsupervised_loader, unsupervised_sampler = make_preligens_data(
+        unsupervised_loader, unsupervised_sampler = make_preligens_data(
                 transform=transform,
                 batch_size=batch_size,
                 collator=mask_collator,
