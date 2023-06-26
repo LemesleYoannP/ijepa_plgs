@@ -37,7 +37,7 @@ class InstanceDataset(PreligensDataset):
     labels_to_int: Dict[int, str] = {}
     int_to_labels: Dict[int, str] = {}
 
-    def __init__(self, root_dir: Path, img_size: int = 256, subset: str = "train", transforms = None):
+    def __init__(self, root_dir: str, img_size: int = 256, subset: str = "train", transforms = None):
         """Load a dataset from a root dir on disk.
 
         Data will be stored in memory as a dict with :
@@ -51,7 +51,7 @@ class InstanceDataset(PreligensDataset):
         """
         super().__init__(root_dir)
 
-        self.root_dir = root_dir
+        self.root_dir = Path(root_dir)
         self.img_size = img_size
 
         with open(self.root_dir / "dataset.yaml", "r") as stream:
