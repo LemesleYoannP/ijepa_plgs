@@ -28,7 +28,7 @@ def make_preligens_data(
     drop_last=True,
 ):
     dataset = InstanceDataset(
-        root=root_path,
+        root_dir=root_path,
         transforms=transform,
         subset=("train" if training else "val"))
     logger.info('Preligens dataset created')
