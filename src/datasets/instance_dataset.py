@@ -49,9 +49,10 @@ class InstanceDataset(PreligensDataset):
             img_size: size of the images (expected height equals width)
             subset : indicates if we want to load train, val or test data
         """
+        root_dir = Path(root_dir)
         super().__init__(root_dir)
 
-        self.root_dir = Path(root_dir)
+        self.root_dir = root_dir
         self.img_size = img_size
 
         with open(self.root_dir / "dataset.yaml", "r") as stream:
