@@ -8,7 +8,7 @@ data:
   image_folder: train/imgs
   num_workers: 10
   pin_mem: true
-  root_path: valohai/inputs/dataset/
+  root_path: /valohai/inputs/dataset/
   use_color_distortion: false
   use_gaussian_blur: false
   use_horizontal_flip: false
