@@ -21,6 +21,8 @@ import copy
 import logging
 import sys
 import yaml
+import json
+from collections import OrderedDict
 
 import numpy as np
 
@@ -219,9 +221,6 @@ def main(args, resume_preempt=False):
                 drop_last=True)
         ipe = len(unsupervised_loader)
 
-        print("!!!!")
-        print(ipe, batch_size)
-
     # -- init optimizer and scheduler
     optimizer, scaler, scheduler, wd_scheduler = init_opt(
         encoder=encoder,
@@ -312,8 +311,6 @@ def main(args, resume_preempt=False):
 
                 def forward_target():
                     with torch.no_grad():
-                        print("!!!!!")
-                        print(imgs.shape)
                         h = target_encoder(imgs)
                         h = F.layer_norm(h, (h.size(-1),))  # normalize over feature-dim
                         B = len(h)
@@ -390,6 +387,13 @@ def main(args, resume_preempt=False):
                                        grad_stats.last_layer,
                                        grad_stats.min,
                                        grad_stats.max))
+                    
+                    # Valohai logs 
+                    json_log = OrderedDict()
+                    json_log["loss"] = loss_meter.avg
+                    json_log["lr"] = _new_lr
+                    json_log["step"] = itr
+                    print(json.dumps(json_log))
 
             log_stats()
 
