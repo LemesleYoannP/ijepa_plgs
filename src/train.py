@@ -219,6 +219,9 @@ def main(args, resume_preempt=False):
                 drop_last=True)
         ipe = len(unsupervised_loader)
 
+        print("!!!!")
+        print(ipe, batch_size)
+
     # -- init optimizer and scheduler
     optimizer, scaler, scheduler, wd_scheduler = init_opt(
         encoder=encoder,
@@ -309,6 +312,8 @@ def main(args, resume_preempt=False):
 
                 def forward_target():
                     with torch.no_grad():
+                        print("!!!!!")
+                        print(imgs.shape)
                         h = target_encoder(imgs)
                         h = F.layer_norm(h, (h.size(-1),))  # normalize over feature-dim
                         B = len(h)
