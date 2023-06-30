@@ -1,5 +1,5 @@
 data:
-  batch_size: 128
+  batch_size: 64
   color_jitter_strength: 0.0
   crop_scale:
   - 0.3
@@ -28,8 +28,8 @@ mask:
   num_pred_masks: 4
   patch_size: 14
   pred_mask_scale:
+  - 0.1
   - 0.15
-  - 0.2
 meta:
   copy_data: false
   load_checkpoint: false
